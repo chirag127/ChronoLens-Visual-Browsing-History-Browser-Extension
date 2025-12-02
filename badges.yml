@@ -1,54 +1,19 @@
-# Badges Configuration
-
-# Base URL for the repository
-base_url: https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension
-
-# Badges to be displayed in the README
-badges:
-  # Build Status
-  - name: "Build Status"
-    icon: "github actions"
-    color: "brightgreen"
-    url: "https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension/actions/workflows/ci.yml"
-    # Markdown format example: [![Build Status](https://img.shields.io/github/actions/workflow/user/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension/ci.yml?style=flat-square&logo=githubactions)]()
-
-  # Code Coverage
-  - name: "Code Coverage"
-    icon: "codecov"
-    color: "brightgreen"
-    url: "https://codecov.io/gh/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension"
-    # Markdown format example: [![Code Coverage](https://img.shields.io/codecov/c/github/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension?style=flat-square&logo=codecov)]()
-
-  # Tech Stack (JavaScript)
-  - name: "Tech Stack"
-    icon: "javascript"
-    color: "yellowgreen"
-    static: true # Static as it represents the core language, not a specific build/version status
-    # Markdown format example: [![Tech Stack](https://img.shields.io/badge/Tech%20Stack-JavaScript%2FNode.js-yellowgreen?style=flat-square)]()
-
-  # Linting/Formatting (Biome/Ruff - adapting for JS context)
-  - name: "Linting/Formatting"
-    icon: "eslint"
-    color: "96588e"
-    static: true
-    # Markdown format example: [![Linting/Formatting](https://img.shields.io/badge/Linting-ESLint-96588e?style=flat-square)]()
-
-  # License
-  - name: "License"
-    icon: "balance-scale"
-    color: "blue"
-    url: "https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension/blob/main/LICENSE"
-    # Markdown format example: [![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue?style=flat-square)]()
-
-  # GitHub Stars
-  - name: "GitHub Stars"
-    icon: "github"
-    color: "brightgreen"
-    url: "https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension"
-    # Markdown format example: [![GitHub Stars](https://img.shields.io/github/stars/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension?style=flat-square&logo=github)]()
-
-# Instructions for README generation:
-# - Use the 'markdown' field for the direct Markdown string.
-# - Ensure all URLs correctly reference the repository username and name.
-# - Always use 'style=flat-square'.
-# - The 'icon' field should ideally match common Shields.io icons.
+build_status:
+  enabled: true
+  workflow_name: "CI"
+  branch: "main"
+coverage:
+  enabled: true
+  repository_coverage_provider: "codecov"
+tech_stack:
+  enabled: true
+  languages:
+    - "JavaScript"
+lint_format:
+  enabled: true
+  linter: "ESLint"
+license:
+  enabled: true
+  license_type: "CC BY-NC 4.0"
+github_stars:
+  enabled: true
