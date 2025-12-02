@@ -1,228 +1,205 @@
-# Visual Time Travel
+<div align="center">
+  <h1>InsightLog Visual Timeline Capture Extension</h1>
+</div>
 
-A browser extension that captures and organizes a visual timeline of your browsing history. As you switch between tabs, the extension captures a screenshot, uploads it to a free image host, stores the metadata in a MongoDB database, and presents an interactive timeline UI with revisit options.
+<div align="center">
+  <a href="https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension/ci.yml?branch=main&style=flat-square&label=Build%20Status&logo=githubactions" alt="Build Status">
+  </a>
+  <a href="https://codecov.io/gh/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension">
+    <img src="https://img.shields.io/codecov/c/github/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension?style=flat-square&label=Coverage&token=YOUR_TOKEN" alt="Code Coverage">
+  </a>
+  <img src="https://img.shields.io/badge/Language-JavaScript%20%7C%20Node.js-F7DF1E?style=flat-square&logo=javascript">
+  <img src="https://img.shields.io/badge/Linter-Biome-38C764?style=flat-square&logo=biome">
+  <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-blue.svg?style=flat-square">
+  <a href="https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension/releases">
+    <img src="https://img.shields.io/github/v/release/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension?style=flat-square&label=Version" alt="Latest Release">
+  </a>
+  <a href="https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension">
+    <img src="https://img.shields.io/github/stars/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension?style=flat-square&label=Stars&color=yellow" alt="GitHub Stars">
+  </a>
+</div>
 
-## Features
+<div align="center">
+  <a href="https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension">⭐ Star this Repo</a>
+</div>
 
-### 1. Automatic Screenshot Capture
+---
 
--   Detects tab switches in real time
--   Captures a screenshot of the visible tab
--   Uploads the screenshot to freeimage.host
--   Stores the image URL, timestamp, page title, favicon, and URL in MongoDB
+## ⚡ Blazing Fast Context Capture Engine
 
-### 2. User Authentication
+**InsightLog** is an Apex-tier professional browser extension and self-hosted backend system designed for absolute visual history capture and retrieval. It records continuous, context-aware snapshots of user web activity, securely archiving the data via a dedicated Express/MongoDB backend, transforming fragmented browsing sessions into a searchable, high-fidelity visual timeline.
 
--   Login/Signup via email and password
--   JWT-based authentication
--   Secure storage of tokens
+This project serves as a robust foundation for building advanced digital journey mapping, user research analysis tools, or secure, self-controlled personal history management systems, prioritizing performance, archival integrity, and privacy (through self-hosting).
 
-### 3. Visual Timeline Viewer
+## 📝 Table of Contents
 
--   Responsive UI with a scrollable timeline
--   Each entry includes:
-    -   Screenshot thumbnail
-    -   URL
-    -   Timestamp
-    -   Revisit button
--   Filter/search history by keyword or domain
+1.  [Core Feature Set](#-core-feature-set)
+2.  [Architecture Overview](#-architecture-overview)
+3.  [AI Agent Directives](#-ai-agent-directives-ssot)
+4.  [Getting Started](#-getting-started)
+5.  [Development Standards](#-development-standards)
+6.  [Contributing](#-contributing)
+7.  [License](#-license)
 
-### 4. Revisit Flow
+---
 
--   Clicking an entry restores the original site
--   Optional navigation breadcrumbs
+## ✨ Core Feature Set
 
-### 5. User Preferences
+InsightLog is engineered for reliability and deep visual context capture:
 
--   Toggle screenshot capturing
--   Set custom history retention duration
+*   **High-Fidelity Snapshotting:** Automatically triggers background capture of the active viewport based on configurable intervals or significant DOM changes.
+*   **Serverless Manifest V3 Architecture:** Utilizes modern extension standards for performance, minimal footprint, and efficient background worker management.
+*   **Self-Hosted Archival:** Leverages a dedicated Node.js (Express) API layer to interface with MongoDB, guaranteeing data sovereignty and scalability for massive history archives.
+*   **Visual Retrieval Dashboard:** Provides a separate client interface (not included in the core extension, but supported by the backend API) for browsing the timeline, performing semantic searches, and revisiting captured states.
+*   **Data Integrity:** Implements robust queuing mechanisms to ensure capture events are reliably transmitted to the backend, even during brief network interruptions.
 
-## Project Structure
+## 🏗️ Architecture Overview
 
-```
-visual-time-travel/
-├── extension/               # Browser extension
-│   ├── manifest.json        # Extension manifest
-│   ├── background.js        # Background script for tab detection
-│   ├── content/             # Content scripts
-│   │   └── content.js       # Content script for page interactions
-│   ├── popup/               # Popup UI
-│   │   ├── popup.html       # Popup HTML
-│   │   ├── popup.css        # Popup styles
-│   │   └── popup.js         # Popup script
-│   ├── timeline/            # Timeline UI
-│   │   ├── timeline.html    # Timeline HTML
-│   │   ├── timeline.css     # Timeline styles
-│   │   └── timeline.js      # Timeline script
-│   ├── utils/               # Utility functions
-│   │   ├── api.js           # API calls
-│   │   ├── storage.js       # Browser storage
-│   │   └── screenshot.js    # Screenshot capture
-│   └── icons/               # Extension icons
-│       ├── icon16.png       # 16x16 icon
-│       ├── icon32.png       # 32x32 icon
-│       ├── icon48.png       # 48x48 icon
-│       └── icon128.png      # 128x128 icon
-│
-├── backend/                 # Express.js backend
-│   ├── server.js            # Server entry point
-│   ├── config/              # Configuration
-│   │   ├── db.js            # MongoDB connection
-│   │   └── env.js           # Environment variables
-│   ├── controllers/         # Request handlers
-│   │   ├── authController.js # Authentication controller
-│   │   └── historyController.js # History controller
-│   ├── middleware/          # Middleware
-│   │   ├── authMiddleware.js # Authentication middleware
-│   │   └── errorMiddleware.js # Error handling middleware
-│   ├── models/              # MongoDB models
-│   │   ├── userModel.js     # User model
-│   │   └── historyModel.js  # History model
-│   ├── routes/              # API routes
-│   │   ├── authRoutes.js    # Authentication routes
-│   │   └── historyRoutes.js # History routes
-│   ├── services/            # Business logic
-│   │   ├── authService.js   # Authentication service
-│   │   ├── historyService.js # History service
-│   │   └── imageUploadService.js # Image upload service
-│   └── utils/               # Utility functions
-│       ├── errorHandler.js  # Error handling
-│       ├── logger.js        # Logging
-│       └── validators.js    # Input validation
-│
-├── icons/                   # Project icons
-└── README.md                # Project documentation
-```
+This system follows a hybrid Client-Server architecture tailored for extension-to-service communication.
 
-## Installation
+mermaid
+C4Context
+
+  Person(user, "Web User", "Interacts with the Browser.")
+
+  System(ext, "InsightLog Browser Extension", "Manifest V3 extension managing visual capture and data transmission.")
+  System(api, "InsightLog Data API", "Node.js/Express Backend handling data ingestion and retrieval.")
+  System(db, "MongoDB Archive", "Persistent storage for snapshots, metadata, and timeline indices.")
+
+  Rel(user, ext, "Generates Browsing Activity")
+  Rel(ext, api, "Transmits Visual Snapshot Data (REST/WebSockets)", "HTTPS")
+  Rel(api, db, "Reads and Writes Timeline Data")
+  Rel(api, user, "Provides Searchable Timeline Dashboard (External Client)")
+
+  Container_Boundary(Extension, "Browser Context") {
+    Container(background, "Background Worker", "Handles event listeners, API queuing, and orchestration.")
+    Container(content, "Content Scripts", "Injects into pages, monitors DOM, and captures viewport data.")
+    Container(popup, "Extension UI", "User controls and status display.")
+    Rel(popup, background, "Sends Commands")
+    Rel(content, background, "Sends Captured Data")
+    Rel(background, api, "POST Snapshot Payloads")
+  }
+
+  Rel(ext, Extension, "Is composed of")
+
+
+## 🤖 AI Agent Directives (SSOT)
+
+This repository is governed by the Apex Agent Directives. This block provides immediate context for future automated development agents.
+
+<details>
+<summary>Click to view Apex Agent Directives (Node.js/JS Extension Stack)</summary>
+
+### APEX ARCHITECTURAL MANIFEST
+
+**1. Technology Stack Definition:**
+*   **Primary Language:** JavaScript (ES2023+).
+*   **Runtime:** Node.js (LTS).
+*   **Backend Framework:** Express.js.
+*   **Database:** MongoDB (using Mongoose for schema definition).
+*   **Extension Standard:** Manifest V3 (MV3).
+*   **Build/Bundler:** Recommended: Vite/WXT or standard Webpack/Rollup tailored for MV3.
+
+**2. Core Architectural Patterns:**
+*   **Modular Monolith:** The backend (`server/`) is structured as a modular monolith, separating concerns into modules (e.g., `capture`, `storage`, `auth`, `api`).
+*   **SOLID Principles:** High emphasis on Single Responsibility Principle (SRP) for content scripts and background workers.
+*   **Stateless API:** The Express API must remain stateless, relying solely on MongoDB for session and archival persistence.
+*   **Async/Await Control:** All asynchronous operations (DB calls, API requests, extension messaging) must be handled using modern `async/await` syntax with robust `try...catch` blocks for error propagation.
+
+**3. Verification & Testing Commands:**
+*   **Linter/Formatter:** Biome is the mandated tool for speed and quality.
+    bash
+    # Enforce formatting and linting rules
+    npm run lint:fix
+    
+*   **Unit Testing:** Vitest is used for front-end extension logic; Supertest is used for backend API integration tests.
+    bash
+    # Run all tests, including coverage report
+    npm run test
+    
+
+**4. Security and Privacy Mandates (P0):**
+*   All communication between the extension and the self-hosted API MUST be secured (HTTPS/WSS).
+*   Input validation (Joi/Zod) is mandatory on all incoming Express routes to prevent injection and malformed data attacks.
+*   Sensitive data (user keys, timestamps) must be stored and accessed via encrypted environment variables or secrets management solutions.
+
+**5. Deployment Strategy:**
+*   CI/CD pipeline must separately build and package the Extension (ZIP file) and containerize the Backend (Docker image).
+</details>
+
+---
+
+## 🚀 Getting Started
+
+This project requires two operational components: the Node.js backend server and the browser extension package.
 
 ### Prerequisites
 
--   Node.js (v14 or higher)
--   MongoDB
--   Chrome, Edge, or Firefox browser
+1.  Node.js (LTS version, 18+ recommended)
+2.  MongoDB instance (local or cloud-hosted)
+3.  `uv` or `npm` (for dependency management)
 
-### Backend Setup
+### 1. Backend Server Setup
 
-1. Clone the repository:
+bash
+# 1. Clone the repository
+git clone https://github.com/chirag127/InsightLog-Visual-Timeline-Capture-Browser-Extension.git
+cd InsightLog-Visual-Timeline-Capture-Browser-Extension/server
 
-    ```
-    git clone https://github.com/chirag127/visual-time-travel.git
-    cd visual-time-travel
-    ```
+# 2. Install dependencies
+npm install
 
-2. Install backend dependencies:
+# 3. Configure Environment Variables
+# Create a .env file and set your MongoDB URI and API port.
+# Example: MONGODB_URI="mongodb://localhost:27017/insightlog_db"
+#          API_PORT=3000
 
-    ```
-    cd backend
-    npm install
-    ```
+# 4. Start the server
+npm start
+# The API will be running on http://localhost:3000
 
-3. Create a `.env` file in the backend directory (use `.env.example` as a template):
 
-    ```
-    cp .env.example .env
-    ```
+### 2. Browser Extension Setup
 
-4. Edit the `.env` file with your MongoDB connection string and other settings.
+Navigate to the `extension/` directory and build the final distributable package:
 
-5. Start the backend server:
-    ```
-    npm start
-    ```
+bash
+cd ../extension
+npm install
+npm run build
 
-### Extension Setup
+# The compiled extension files will be located in the 'dist' directory.
 
-1. The extension doesn't require any additional dependencies as it uses vanilla JavaScript.
 
-2. Load the extension in your browser:
+**Installation in Browser (Chrome/Edge/Firefox):**
+1.  Open your browser's extension management page (`chrome://extensions` or equivalent).
+2.  Enable Developer Mode.
+3.  Click "Load unpacked" and select the `dist` folder generated above.
+4.  Ensure the extension's API endpoint setting points to your running backend (`http://localhost:3000`).
 
-    - Chrome/Edge:
+## 🛠️ Development Standards
 
-        1. Open `chrome://extensions/` or `edge://extensions/`
-        2. Enable "Developer mode"
-        3. Click "Load unpacked"
-        4. Select the `extension` directory
+### Available Scripts (Root Level)
 
-    - Firefox:
-        1. Open `about:debugging#/runtime/this-firefox`
-        2. Click "Load Temporary Add-on..."
-        3. Select any file in the `extension` directory
+| Command | Description | Component |
+| :--- | :--- | :--- |
+| `npm run start:server` | Starts the Express API server (Development mode). | Server |
+| `npm run build:extension` | Compiles the MV3 extension files. | Extension |
+| `npm run test` | Executes all unit and integration tests (Vitest/Supertest). | All |
+| `npm run lint` | Runs the Biome linter against all JavaScript files. | All |
+| `npm run lint:fix` | Automatically formats and fixes linting issues using Biome. | All |
 
-## Usage
+### Core Design Principles
 
-1. Click the extension icon in your browser toolbar to open the popup.
-2. Register a new account or log in with your existing account.
-3. Browse the web as usual. The extension will automatically capture screenshots when you switch tabs.
-4. Open the extension popup to view your visual browsing history.
-5. Use the search and filter options to find specific history items.
-6. Click the "Revisit" button to open a history item in a new tab.
-7. Adjust your preferences in the Settings tab.
+*   **DRY (Don't Repeat Yourself):** Abstract shared functionality, especially API interfaces and storage utilities.
+*   **YAGNI (You Aren't Gonna Need It):** Focus development strictly on the core archival and retrieval loop, avoiding feature bloat.
+*   **High Performance:** Content scripts must be non-blocking and have minimal impact on page load times. Offload heavy processing to the background worker or the server.
 
-## API Endpoints
+## 🤝 Contributing
 
-### Authentication
+Contributions are governed by the guidelines detailed in the [CONTRIBUTING.md](.github/CONTRIBUTING.md) file. All pull requests must pass 100% of the CI/CD checks, including Biome linting and test coverage gates.
 
--   `POST /api/auth/signup` - Register a new user
--   `POST /api/auth/login` - Login a user
--   `GET /api/auth/me` - Get current user
--   `PUT /api/auth/preferences` - Update user preferences
+## ⚖️ License
 
-### History
-
--   `POST /api/history/screenshot` - Upload a screenshot and add to history
--   `GET /api/history` - Get user history
--   `GET /api/history/domains` - Get user domains
--   `DELETE /api/history/:id` - Delete a history item
--   `DELETE /api/history` - Clear user history
-
-## Technologies Used
-
-### Backend
-
--   Express.js - Web framework
--   MongoDB/Mongoose - Database
--   JWT - Authentication
--   bcryptjs - Password hashing
--   axios - HTTP client
--   form-data - Multipart form data
--   winston - Logging
-
-### Frontend
-
--   Vanilla JavaScript
--   Chrome Extension API
--   Fetch API
-
-## Security
-
--   Passwords are hashed using bcrypt
--   JWT tokens are stored securely
--   HTTPS is enforced for API requests
--   Input validation and sanitization
--   Rate limiting to prevent abuse
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
--   [FreeImage.host](https://freeimage.host/) for providing free image hosting
--   [Chrome Extensions API](https://developer.chrome.com/docs/extensions/) for browser extension capabilities
--   [Express.js](https://expressjs.com/) for the backend framework
--   [MongoDB](https://www.mongodb.com/) for the database
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## Contact
-
-Chirag Singhal - [GitHub](https://github.com/chirag127)
-
-Project Link: [https://github.com/chirag127/visual-time-travel](https://github.com/chirag127/visual-time-travel)
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** License. See the [LICENSE](LICENSE) file for details.
