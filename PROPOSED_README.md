@@ -1,199 +1,222 @@
-# ChronoLens-Visual-Browsing-History-Browser-Extension
+<p align="center">
+  <img src="https://raw.githubusercontent.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/main/.github/assets/chronolens-hero-banner.png" alt="ChronoLens Hero Banner" width="800">
+</p>
 
-![Build Status](https://img.shields.io/github/actions/workflow/user/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/ci.yml?style=flat-square&logo=githubactions)
-![Code Coverage](https://img.shields.io/codecov/c/github/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension?style=flat-square&logo=codecov)
-![Tech Stack](https://img.shields.io/badge/tech-stack-JavaScript-blue?style=flat-square&logo=javascript)
-![Linting](https://img.shields.io/badge/linting-Biome-orange?style=flat-square&logo=biome)
-![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-red?style=flat-square&logo=creativecommons)
-![GitHub Stars](https://img.shields.io/github/stars/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension?style=flat-square&logo=github)
+<p align="center">
+  <a href="https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/ci.yml?branch=main&style=flat-square&label=Build%20Status" alt="Build Status">
+  </a>
+  <a href="https://codecov.io/gh/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension">
+    <img src="https://img.shields.io/codecov/c/github/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension?style=flat-square&token=YOUR_CODECOV_TOKEN_HERE" alt="Code Coverage">
+  </a>
+  <a href="https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension">
+    <img src="https://img.shields.io/badge/Tech%20Stack-TS%20%7C%20React%20%7C%20Vite%20%7C%20WXT%20%7C%20TailwindCSS-blueviolet?style=flat-square" alt="Tech Stack">
+  </a>
+  <a href="https://biomejs.dev/">
+    <img src="https://img.shields.io/badge/Lint%2FFmt-Biome-38C538?style=flat-square" alt="Lint/Format">
+  </a>
+  <a href="https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey?style=flat-square" alt="License">
+  </a>
+  <a href="https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/stargazers">
+    <img src="https://img.shields.io/github/stars/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension?style=flat-square&color=orange" alt="GitHub Stars">
+  </a>
+</p>
 
-**Elevate your digital journey with ChronoLens: an intelligent browser extension that transforms your browsing history into a visual, interactive timeline of screenshots.**
+<p align="center">
+  ⭐ Star this Repo! ⭐
+</p>
 
-**Rediscover your past online activity through an automatically captured, organized, and searchable visual archive.**
+## ChronoLens: Visual Browsing History Browser Extension
 
-## 🏗️ Architecture
+ChronoLens visually transforms your browsing history into an interactive, searchable timeline of screenshots, empowering you to rediscover and manage your digital journey with unparalleled ease and privacy. It's a cutting-edge productivity tool designed for Chrome and Firefox, meticulously crafted to enhance your web exploration experience.
+
+## 🚀 Features
+
+*   **Visual History Timeline:** Browse your past sessions with high-fidelity page screenshots.
+*   **Intelligent Search:** Effortlessly find specific moments or content within your history.
+*   **Privacy-First Design:** Local storage and optional encryption ensure your data remains yours.
+*   **Cross-Browser Compatibility:** Seamlessly integrates with Chrome and Firefox.
+*   **Interactive Snapshots:** Click on any screenshot to revisit the exact page state.
+*   **Resource Management:** Configurable history retention and storage limits.
+
+## 🏗️ Architecture: Feature-Sliced Design (FSD)
+
+ChronoLens adheres to the Feature-Sliced Design (FSD) methodology, ensuring a scalable, maintainable, and highly organized codebase. This modular approach segregates application logic into distinct layers, promoting clear responsibilities and reducing coupling.
 
 mermaid
 graph TD
-    A[User Browsing] --> B{ChronoLens Extension}
-    B --> C[Screenshot Capture Module]
-    B --> D[History Storage (Local/Cloud)]
-    C --> E[Image Processing]
-    D --> F[Timeline Generation]
-    F --> G[Search & Visualization UI]
-    G --> H[User Interaction]
-
-    subgraph Backend Services
-        D
-        F
-    end
-
-    subgraph Frontend
-        B
-        C
-        G
-        H
-    end
+    A[App: Root of the application] --> P(Pages: Full-page components, routing)
+    A --> W(Widgets: Independent, reusable UI blocks)
+    A --> F(Features: Business logic, complex interactions)
+    A --> E(Entities: Data models, API clients)
+    A --> S(Shared: Utilities, constants, UI kit)
+    P --> F
+    W --> F
+    F --> E
+    E --> S
+    W --> S
+    F --> S
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style P fill:#bbf,stroke:#333,stroke-width:2px
+    style W fill:#bfb,stroke:#333,stroke-width:2px
+    style F fill:#fbb,stroke:#333,stroke-width:2px
+    style E fill:#ffb,stroke:#333,stroke-width:2px
+    style S fill:#cff,stroke:#333,stroke-width:2px
 
 
-## 📄 Table of Contents
+## 📖 Table of Contents
 
-*   [About ChronoLens](#about-chronolens)
-*   [Key Features](#key-features)
-*   [Technology Stack](#technology-stack)
-*   [Installation](#installation)
-*   [Usage](#usage)
-*   [Development](#development)
-*   [Contributing](#contributing)
-*   [License](#license)
-*   [Support](#support)
+-   [ChronoLens: Visual Browsing History Browser Extension](#chronolens-visual-browsing-history-browser-extension)
+-   [🚀 Features](#-features)
+-   [🏗️ Architecture: Feature-Sliced Design (FSD)](#%EF%B8%8F-architecture-feature-sliced-design-fsd)
+-   [📖 Table of Contents](#-table-of-contents)
+-   [🤖 AI Agent Directives](#-ai-agent-directives)
+-   [⚙️ Getting Started](#%EF%B8%8F-getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation](#installation)
+    -   [Development Scripts](#development-scripts)
+-   [🤝 Contributing](#-contributing)
+-   [🛡️ Security](#%EF%B8%8F-security)
+-   [📜 License](#-license)
 
-## 💡 About ChronoLens
+<details>
+<summary><h2>🤖 AI Agent Directives</h2></summary>
 
-ChronoLens is a sophisticated browser extension designed to revolutionize how you manage and recall your online explorations. Instead of a simple list of URLs and timestamps, ChronoLens captures the essence of your browsing sessions by taking automatic screenshots of visited pages. These visuals are then meticulously organized into an interactive, searchable timeline, allowing you to intuitively navigate your digital past and retrieve information with unprecedented ease.
+# SYSTEM: APEX TECHNICAL AUTHORITY & ELITE ARCHITECT (DECEMBER 2025 EDITION)
 
-## ✨ Key Features
+## 1. IDENTITY & PRIME DIRECTIVE
+**Role:** You are a Senior Principal Software Architect and Master Technical Copywriter with **40+ years of elite industry experience**. You operate with absolute precision, enforcing FAANG-level standards and the wisdom of "Managing the Unmanageable."
+**Context:** Current Date is **December 2025**. You are building for the 2026 standard.
+**Output Standard:** Deliver **EXECUTION-ONLY** results. No plans, no "reporting"—only executed code, updated docs, and applied fixes.
+**Philosophy:** "Zero-Defect, High-Velocity, Future-Proof."
 
-*   **Visual Timeline:** An engaging, chronological display of your browsing history using actual page screenshots.
-*   **Automatic Screenshotting:** Seamlessly captures snapshots of visited pages without user intervention.
-*   **Intelligent Organization:** Stores and categorizes screenshots for efficient recall.
-*   **Powerful Search:** Quickly find past pages and information using keyword searches across historical data.
-*   **Cross-Browser Compatibility:** Designed to work across major browsers (Chrome, Firefox, etc.).
-*   **Privacy-Focused:** Options for local storage or secure cloud synchronization, prioritizing user privacy.
+---
 
-## 🚀 Technology Stack
+## 2. INPUT PROCESSING & COGNITION
+*   **SPEECH-TO-TEXT INTERPRETATION PROTOCOL:**
+    *   **Context:** User inputs may contain phonetic errors (homophones, typos).
+    *   **Semantic Correction:** **STRICTLY FORBIDDEN** from executing literal typos. You must **INFER** technical intent based on the project context.
+    *   **Logic Anchor:** Treat the `README.md` as the **Single Source of Truth (SSOT)**.
+*   **MANDATORY MCP INSTRUMENTATION:**
+    *   **No Guessing:** Do not hallucinate APIs.
+    *   **Research First:** Use `linkup`/`brave` to search for **December 2025 Industry Standards**, **Security Threats**, and **2026 UI Trends**.
+    *   **Validation:** Use `docfork` to verify *every* external API signature.
+    *   **Reasoning:** Engage `clear-thought-two` to architect complex flows *before* writing code.
 
-*   **Core Language:** JavaScript (ES6+)
-*   **Extension Framework:** WebExtension API (compatible with Chrome, Firefox, Edge)
-*   **Build Tool:** Vite (for fast development builds and optimized production output)
-*   **UI Styling:** Tailwind CSS (for rapid, utility-first UI development)
-*   **State Management:** (TBD - e.g., Context API, Zustand, or Signals if integrated with a framework like React/Vue)
-*   **Storage:** WebExtensions Storage API (local), potentially IndexedDB for larger datasets.
-*   **Optional Backend (for Cloud Sync):** Node.js, Express.js, MongoDB (for cloud-based history synchronization and advanced features).
+---
 
-## 📦 Installation
+## 3. CONTEXT-AWARE APEX TECH STACKS (LATE 2025 STANDARDS)
+**Directives:** This project, `ChronoLens-Visual-Browsing-History-Browser-Extension`, is a browser extension. It adheres to the **WEB / APP / EXTENSION** scenario.
 
-**For Development:**
+*   **PRIMARY SCENARIO: WEB / APP / EXTENSION (TypeScript)**
+    *   **Stack:** This project leverages **TypeScript 6.x (Strict)**, **React 19+**, and **Vite 7** with **WXT** for robust browser extension development. **TailwindCSS v4 (JIT mode)** is used for highly efficient and scalable styling.
+    *   **Architecture:** Adheres strictly to the **Feature-Sliced Design (FSD)** methodology, ensuring clear separation of concerns across app, pages, widgets, features, entities, and shared layers. This promotes maintainability, scalability, and testability.
+    *   **Linting/Formatting:** Utilizes **Biome** for lightning-fast and opinionated code quality enforcement, covering both linting and formatting to ensure consistent code standards.
+    *   **Testing:** Employs **Vitest** for rapid unit and integration tests, and **Playwright** for robust end-to-end testing across various browser environments (Chrome, Firefox, Edge) to ensure cross-browser compatibility and functionality.
+    *   **Platform-Specifics:** Leverages **WebExtensions API** through WXT for seamless cross-browser compatibility, abstracting away differences between browser implementations.
+    *   **Data Persistence:** Utilizes browser's local storage (and potentially IndexedDB for larger data sets) following privacy-first best practices.
+
+*   **SECONDARY SCENARIO B: SYSTEMS / PERFORMANCE (Rust/Go) - *Not applicable for this project's primary function. Reference only for potential future native integrations.***
+
+*   **SECONDARY SCENARIO C: DATA / AI / SCRIPTS (Python) - *Not applicable for this project's primary function. Reference only for potential future backend AI services.***
+
+---
+
+## 4. CODE QUALITY & STANDARDS (DECEMBER 2025)
+*   **TEST COVERAGE:** Minimum **90% unit test coverage**. No exceptions. Utilize Vitest for all unit and integration tests. Playwright for E2E.
+*   **LINTING/FORMATTING:** **Biome** must pass with zero warnings or errors. Hooks `pre-commit` and `pre-push` are mandatory.
+*   **TYPING:** **TypeScript `strict` mode** must be enforced. No `any` types without explicit justification via `@ts-expect-error` or `@ts-ignore` with a detailed comment.
+*   **DEPENDENCY MANAGEMENT:** **pnpm** is the mandated package manager for superior performance and strict dependency resolution. All dependencies must be current, with no known high-severity CVEs.
+*   **API DESIGN:** All internal and external API interactions must follow **SOLID principles**. External APIs (e.g., WebExtensions) must have robust error handling, retry mechanisms, and graceful degradation.
+*   **ERROR HANDLING:** Comprehensive error logging and user-friendly error messages are required. Sentry.io integration is recommended for production environments.
+*   **PERFORMANCE:** Bundle size optimization with Vite, lazy loading for heavy components/features, and efficient use of browser storage mechanisms.
+*   **ACCESSIBILITY (A11y):** All UI components must conform to WCAG 2.1 AA standards.
+*   **SECURITY:** Adhere to OWASP Top 10 for browser extensions. Content Security Policy (CSP) enforcement. Data encryption for sensitive user data even in local storage.
+
+---
+
+## 5. VERIFICATION COMMANDS
+
+To verify the system's integrity and performance:
+
+bash
+pnpm install
+pnpm lint
+pnpm typecheck
+pnpm test:unit
+pnpm test:e2e
+pnpm build
+
+
+</details>
+
+## ⚙️ Getting Started
+
+Follow these steps to set up and run ChronoLens locally.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+*   [Node.js](https://nodejs.org/en/download/) (v18.x or higher)
+*   [pnpm](https://pnpm.io/installation/) (v8.x or higher)
+*   A modern web browser (Chrome, Firefox, or Edge)
+
+### Installation
 
 1.  **Clone the repository:**
+
     bash
     git clone https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension.git
     cd ChronoLens-Visual-Browsing-History-Browser-Extension
     
 
 2.  **Install dependencies:**
+
     bash
-    npm install
+    pnpm install
     
 
 3.  **Build the extension for development:**
+
     bash
-    npm run dev
+    pnpm dev
     
 
+    This will build the extension into the `dist` directory and watch for changes.
+
 4.  **Load the extension in your browser:**
-    *   **Chrome/Edge:** Go to `chrome://extensions` or `edge://extensions`, enable Developer Mode, and click "Load unpacked" pointing to the `dist` or `build` folder.
-    *   **Firefox:** Go to `about:debugging#/runtime/this-firefox`, click "Load Temporary Add-on", and select the `manifest.json` file.
 
-**For Production (Future):**
+    *   **Chrome:**
+        1.  Open Chrome and navigate to `chrome://extensions`.
+        2.  Enable "Developer mode" in the top right corner.
+        3.  Click "Load unpacked" and select the `dist` directory within your cloned repository.
+    *   **Firefox:**
+        1.  Open Firefox and navigate to `about:debugging#/runtime/this-firefox`.
+        2.  Click "Load Temporary Add-on..." and select any file within the `dist` directory (e.g., `dist/manifest.json`).
 
-*   Packages will be available via browser web stores (Chrome Web Store, Firefox Add-ons).
+### Development Scripts
 
-## ▶️ Usage
-
-*   Once installed, the ChronoLens icon will appear in your browser's toolbar.
-*   Click the icon to open the visual timeline interface.
-*   Browse the web as usual; ChronoLens will automatically capture screenshots.
-*   Use the search bar to find specific past browsing sessions or content.
-
-## 🛠️ Development
-
-*   **Development Server:** Run `npm run dev` for a live-reloading development environment.
-*   **Production Build:** Run `npm run build` to create optimized production assets.
-*   **Linting & Formatting:** Use `npm run lint` and `npm run format` to maintain code quality. The project uses Biome for linting and formatting.
-
-### 🧪 Testing
-
-*   **Unit Tests:** Run `npm run test:unit` to execute unit tests using Vitest.
-*   **End-to-End (E2E) Tests:** Run `npm run test:e2e` to execute E2E tests using Playwright.
+| Script          | Description                                             |
+| :-------------- | :------------------------------------------------------ |
+| `pnpm dev`      | Starts the development server with hot-reloading.       |
+| `pnpm build`    | Compiles the extension for production.                  |
+| `pnpm lint`     | Runs Biome linter and formatter.                        |
+| `pnpm typecheck`| Checks TypeScript types.                                |
+| `pnpm test:unit`| Runs Vitest unit and integration tests.                 |
+| `pnpm test:e2e` | Runs Playwright end-to-end tests across browsers.       |
+| `pnpm test`     | Runs all tests (`unit` and `e2e`).                      |
+| `pnpm format`   | Formats the codebase using Biome.                       |
 
 ## 🤝 Contributing
 
-We welcome contributions! Please refer to our [CONTRIBUTING.md](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/.github/CONTRIBUTING.md) file for detailed guidelines on how to submit your ideas, bug reports, and pull requests.
+We welcome contributions to ChronoLens! Please read our [Contributing Guidelines](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/.github/CONTRIBUTING.md) to get started.
 
-## ⚖️ License
+## 🛡️ Security
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)** license. See the [LICENSE](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/LICENSE) file for more details.
+For information on security vulnerabilities and how to report them, please refer to our [Security Policy](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/.github/SECURITY.md).
 
-## 💖 Support
+## 📜 License
 
-If you encounter any issues or have suggestions, please open an issue on our GitHub repository.
-
----
-
-<details>
-<summary>🤖 AI Agent Directives & Tech Stack Definition (December 2025)</summary>
-
-### 🚀 Mission Statement
-
-You are an **Apex Technical Authority** operating with the precision of a Senior Principal Architect. Your prime directive is to ensure this repository adheres to **FAANG-level standards**, implements **Zero-Defect, High-Velocity, Future-Proof** principles, and embodies the wisdom of "Managing the Unmanageable." You prioritize clarity, efficiency, and robust architecture.
-
-### 🎯 Core Principles
-
-*   **SOLID:** Maintain robust, maintainable, and scalable code.
-*   **DRY:** Avoid redundant code; strive for reusability.
-*   **YAGNI:** "You Ain't Gonna Need It" - build only what is necessary now.
-*   **KISS:** "Keep It Simple, Stupid" - favor simplicity over complexity.
-*   **Convention over Configuration:** Adhere to established patterns and standards.
-
-### 💻 Technology Stack (Apex Standard - Late 2025)
-
-This repository is built using the following stack, designed for performance, maintainability, and developer velocity:
-
-*   **Language:** JavaScript (ES6+)
-*   **Extension Framework:** WebExtension API
-*   **Build Tool:** Vite 7.x (with Rolldown integration for performance)
-*   **UI Framework/Library:** N/A (Utility-first with Tailwind CSS)
-*   **Styling:** Tailwind CSS v4.x
-*   **State Management:** Standardized Signals (if integrated with a framework), or Context API/Zustand for pure JS.
-*   **Linting & Formatting:** Biome 1.x (Ensures code quality and consistency with extreme speed).
-*   **Testing Frameworks:**
-    *   **Unit Testing:** Vitest 1.x (Fast, Vite-native unit testing).
-    *   **End-to-End (E2E) Testing:** Playwright 1.x (Robust browser automation for E2E scenarios).
-*   **Package Manager:** npm 10.x (or Yarn 4.x)
-*   **Optional Cloud Sync Backend:** Node.js 20.x, Express.js 5.x, MongoDB 7.x (for advanced features requiring server-side processing and storage).
-
-### ⚙️ Architectural Patterns
-
-*   **Extension Architecture:** Adheres to the WebExtension API lifecycle and best practices. Modules are designed for clear separation of concerns (e.g., content scripts, background scripts, popup UI).
-*   **UI Design:** Component-based approach utilizing Tailwind CSS for rapid UI development, ensuring responsiveness and aesthetic consistency.
-*   **Data Management:** Leverages browser's native storage APIs (e.g., `chrome.storage` or `browser.storage`) for local persistence. IndexedDB may be employed for larger datasets. Cloud synchronization utilizes a defined API contract with a Node.js/Express backend.
-
-### ✅ Verification Commands
-
-*   **Install Dependencies:** `npm install`
-*   **Run Linters & Formatters:** `npm run lint`, `npm run format`
-*   **Run Unit Tests:** `npm run test:unit`
-*   **Run E2E Tests:** `npm run test:e2e`
-*   **Start Development Server:** `npm run dev`
-*   **Build Production:** `npm run build`
-
-### 🧠 AI Agent Directives (Execution Flow)
-
-1.  **Analyze Input:** Understand the user's request and the repository's current state.
-2.  **Validate Against Apex Standards:** Ensure all code, documentation, and configurations meet the highest industry benchmarks.
-3.  **Execute Tasks:** Perform requested actions (e.g., code generation, refactoring, documentation updates) with zero hesitation.
-4.  **Prioritize & Optimize:** Focus on high-impact changes that improve performance, security, and maintainability.
-5.  **Maintain State:** Ensure all generated content is consistent and reflects the current state of the repository.
-6.  **Report (Implicitly):** The output JSON represents the executed state. No explicit verbose reporting is required.
-
-</details>
-
----
-
-<details>
-<summary>⭐ Star ⭐ this Repo!</summary>
-
-If you find ChronoLens valuable, please consider starring this repository to show your support and help it gain visibility!
-
-</details>
+ChronoLens is distributed under the [CC BY-NC 4.0 License](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/LICENSE). See the `LICENSE` file for more details.
