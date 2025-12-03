@@ -1,55 +1,53 @@
-# Security Policy for ChronoLens-Visual-Browsing-History-Browser-Extension
+# Security Policy for ChronoLens
 
-As the **Apex Technical Authority**, security is treated as a first-class citizen, adhering to the principle of 'Security by Design' mandated for all high-velocity projects.
+## 1. Our Commitment to Security
 
-This repository follows the **Zero-Defect** philosophy. All dependencies are rigorously vetted during the CI/CD pipeline (`.github/workflows/ci.yml`).
+At ChronoLens, we consider the security and privacy of our users to be paramount. Our architecture is designed with a **privacy-first** approach, ensuring that your browsing data remains under your control. This document outlines our security policies, best practices, and the procedure for reporting vulnerabilities.
 
-## 1. Supported Versions
+## 2. Supported Versions
 
-This project is actively maintained and actively monitored. We support the latest stable release of the core components:
+Security updates are applied only to the most recent major version of ChronoLens available on the official Chrome and Firefox extension marketplaces.
 
-*   **Browser Extension API:** Latest stable Manifest V3 compliance.
-*   **Runtime Environment:** Current Node.js LTS (as of December 2025).
-*   **Frontend Stack:** TypeScript, Vite, React/Preact (as appropriate).
+| Version | Supported          |
+| ------- | ------------------ |
+| `1.x.x` | :white_check_mark: |
 
-## 2. Vulnerability Reporting
+## 3. Reporting a Vulnerability
 
-We welcome responsible disclosure of security vulnerabilities. We treat all security reports with the highest priority.
+We take all security reports seriously. If you discover a potential security vulnerability, we ask that you help us by reporting it privately and responsibly.
 
-If you discover a security vulnerability, please follow these steps:
+**Please do not disclose the vulnerability publicly until it has been resolved.**
 
-1.  **Do NOT** create a public GitHub Issue.
-2.  Email the dedicated security channel immediately: `security@apex-architect.io` (Placeholder for security contact).
-3.  Describe the vulnerability in detail, including:
-    *   Affected component(s) and version(s).
-    *   Steps to reproduce the exploit.
-    *   Any proof-of-concept (PoC) code (preferably in a secure, encrypted format if necessary).
+### How to Report
 
-We aim to acknowledge receipt of all reports within **48 hours** and provide a timeline for resolution.
+1.  **Primary Method:** Use GitHub's **Private Vulnerability Reporting** feature. This is the fastest and most secure way to reach us.
+    -   [**Submit a new private report**](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/security/advisories/new)
 
-## 3. Security Audits and Practices
+2.  **Report Details:** Please include the following information in your report:
+    -   A clear and descriptive title.
+    -   A detailed description of the vulnerability.
+    -   Step-by-step instructions to reproduce the issue.
+    -   The version of the extension and the browser you are using.
+    -   Any proof-of-concept code, screenshots, or logs that demonstrate the vulnerability.
 
-### Dependency Scanning
+### Our Commitment to You
 
-The CI/CD pipeline (`ci.yml`) automatically executes dependency scanning tools to check for known vulnerabilities in npm packages. Any build failure due to a high-severity vulnerability will halt merging to the main branch.
+-   We will acknowledge receipt of your report within **48 hours**.
+-   We will provide a status update on the investigation within **5 business days**.
+-   We will work diligently to validate, patch, and release an update to address the vulnerability.
+-   We will publicly credit you for your discovery (if you wish) once the vulnerability has been resolved.
 
-### Data Handling and Privacy
+## 4. Core Security Principles
 
-Given this project handles sensitive browsing history data, strict adherence to privacy principles is non-negotiable:
+-   **Privacy-First Architecture:** All user data, including captured screenshots and browsing history metadata, is processed and stored **exclusively on the user's local machine**. No user-generated data is ever transmitted to or stored on any external servers.
 
-*   **Data Minimization:** Only necessary metadata required for the visual timeline feature is collected.
-*   **Local Processing Preference:** The architecture prioritizes local browser storage or secure, ephemeral backend processing where feasible. Any transmission of history data requires explicit user consent and secure, encrypted channels (TLS 1.3+).
-*   **OWASP Top 10 Awareness:** Code reviews explicitly check for common web vulnerabilities (XSS, CSRF) related to any potential extension service workers or background scripts.
+-   **Principle of Least Privilege:** The extension is designed to request the absolute minimum set of browser permissions required for its core functionality (e.g., accessing active tabs, history, and local storage).
 
-## 4. Disclosure Timeline (Best Effort)
+-   **Dependency Management:** We use GitHub Dependabot and `npm audit` to proactively monitor our third-party dependencies for known vulnerabilities and apply patches in a timely manner.
 
-| Severity | Target Response Time | Target Fix Time (If Confirmed) |
-| :--- | :--- | :--- |
-| Critical | 12 Hours | 7 Days |
-| High | 24 Hours | 14 Days |
-| Medium | 3 Days | 30 Days |
-| Low | 5 Days | Best Effort in Next Release |
+-   **Secure Coding Practices:** Our codebase is regularly linted and reviewed to adhere to modern security standards for web extensions, including protection against Cross-Site Scripting (XSS) and other common web vulnerabilities.
 
---- 
+## 5. Safe Usage Recommendations
 
-*This security policy is subject to revision in line with evolving threat landscapes and best practices dictated by the Apex Technical Authority framework.*
+-   **Official Sources Only:** Only install ChronoLens from the official Chrome Web Store or the Firefox Browser Add-ons marketplace.
+-   **Keep Updated:** Ensure both your web browser and the ChronoLens extension are always updated to the latest version to receive the latest security patches.
