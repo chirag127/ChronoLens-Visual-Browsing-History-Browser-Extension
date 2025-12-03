@@ -1,70 +1,80 @@
-# Contributing to ChronoLens-Visual-Browsing-History-Browser-Extension
+# 🤝 Contribution Guidelines for ChronoLens-Visual-Browsing-History-Browser-Extension
 
-Thank you for considering contributing to ChronoLens! This project aims to provide a superior visual browsing history experience. We welcome contributions of all kinds, from bug reports and feature requests to code submissions and documentation improvements.
+As the Apex Technical Authority mandates, contributions to this repository must adhere to the highest standards of engineering discipline, architectural purity, and velocity. We enforce **Zero-Defect** quality.
+
+This project is built using a modern **TypeScript/React/Vite/TailwindCSS** stack for the frontend extension layer, orchestrated via **Node.js** services where necessary. All contributions must respect the **Feature-Sliced Design (FSD)** pattern.
 
 ## 1. Code of Conduct
 
-This project adheres to the Contributor Covenant Code of Conduct. Please read the [CODE_OF_CONDUCT.md](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/CODE_OF_CONDUCT.md) file to understand the expected standards of behavior.
+This project adheres to the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). We expect all participants to maintain a professional, welcoming, and constructive environment.
 
-## 2. How to Contribute
+## 2. The Apex Contribution Workflow
 
-### 2.1 Reporting Bugs
+We utilize a strict Git Flow model optimized for high-velocity integration. All work must pass automated checks before manual review.
 
-If you find a bug, please report it using the **Bug Report** issue template. Provide as much detail as possible, including:
+### A. Setup and Environment
 
-*   A clear and concise description of the bug.
-*   Steps to reproduce the bug.
-*   Your browser version and operating system.
-*   Screenshots or screen recordings if applicable.
-
-### 2.2 Suggesting Enhancements
-
-We are always open to new ideas! If you have a suggestion for a new feature or an improvement to an existing one, please open a new issue and use the **Feature Request** template. Clearly explain the proposed change and its benefits.
-
-### 2.3 Pull Requests
-
-We appreciate code contributions! If you'd like to contribute code, please follow these steps:
-
-1.  **Fork the Repository:** Create your own fork of the `chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension` repository.
-2.  **Clone Your Fork:** Clone your forked repository to your local machine.
+1.  **Fork:** Fork this repository to your personal GitHub account.
+2.  **Clone:** Clone your fork locally:
     bash
-    git clone https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension.git
+    git clone https://github.com/YOUR_USERNAME/ChronoLens-Visual-Browsing-History-Browser-Extension.git
     cd ChronoLens-Visual-Browsing-History-Browser-Extension
     
-3.  **Create a New Branch:** Start a new branch for your feature or bug fix.
+3.  **Install Dependencies:** We use `npm` for managing the TypeScript/Node ecosystem.
     bash
-    git checkout -b feat/your-feature-name
-    # or
-    git checkout -b fix/your-bug-fix
+    npm install
     
-4.  **Make Your Changes:** Implement your changes, adhering to the project's coding standards and architectural guidelines.
-5.  **Test Your Changes:** Ensure all tests pass and consider adding new tests for your changes.
-6.  **Commit Your Changes:** Write clear, concise commit messages.
+4.  **Feature Branching:** Create a dedicated feature branch off `main` using the standardized prefix:
     bash
-    git add .
-    git commit -m "feat: Add descriptive commit message for your changes"
+    git checkout -b feat/your-descriptive-feature-name
+    # or for fixes:
+    git checkout -b fix/issue-number-short-description
     
-7.  **Push to Your Fork:** Push your branch to your forked repository.
+
+### B. Development & Verification
+
+Before committing, ensure your changes pass local verification checks as defined in the `ci.yml` workflow.
+
+1.  **Linting & Formatting (Biome):** Enforce code style immediately.
     bash
-    git push origin feat/your-feature-name
+    npm run lint -- --fix
     
-8.  **Open a Pull Request:** Navigate to the original repository and open a pull request from your branch. Provide a clear description of your changes, referencing any related issues.
+2.  **Unit Testing (Vitest):** Run all unit tests for affected modules.
+    bash
+    npm run test:unit
+    
+3.  **End-to-End Checks (Playwright):** Verify critical user flows are intact.
+    bash
+    npm run test:e2e
+    
 
-## 3. Development Setup & Guidelines
+### C. Commit and Pull Request (PR)
 
-Refer to the [README.md](https://github.com/chirag127/ChronoLens-Visual-Browsing-History-Browser-Extension/blob/main/README.md) for detailed setup instructions and development environment configuration.
+1.  **Atomic Commits:** Commit changes in small, logical chunks. Each commit message must adhere to the **Conventional Commits** specification (e.g., `feat: add new history filtering API`, `fix: resolve memory leak in background script`).
+2.  **Push:** Push your feature branch to your fork.
+3.  **Open PR:** Open a Pull Request against `chirag127:main`.
 
-*   **Technology Stack:** JavaScript, Node.js, Browser Extension APIs.
-*   **Architecture:** Follow the principles outlined in the `AGENTS.md` file.
-*   **Linting & Formatting:** Ensure your code adheres to the project's linting and formatting rules. This helps maintain code quality and consistency.
-*   **Testing:** All new code should be accompanied by relevant tests. Ensure existing tests are not broken.
+**PR Template Usage:** You **MUST** use the provided `PULL_REQUEST_TEMPLATE.md` to detail the changes, architectural impact, and testing performed.
 
-## 4. Project Structure
+## 3. Architectural Alignment Directives
 
-Familiarize yourself with the project's directory structure to understand where to place your contributions. The project generally follows a standard browser extension structure with clear separation for background scripts, content scripts, UI components, and utility modules.
+All new code must align with the 2026 Architectural Standards:
 
-## 5. Questions?
+*   **TypeScript Strictness:** All new TypeScript files must utilize the strictest possible configuration (`tsconfig.json`). Errors are bugs.
+*   **Feature-Sliced Design (FSD):** Organize code logically into `features/`, `entities/`, `shared/`, and `pages/` where applicable within the extension structure. Avoid deep nesting in shared utilities.
+*   **Immutability & Purity:** Favor pure functions and immutable state management (Redux Toolkit/Zustand patterns). Side effects must be explicitly managed in dedicated boundary layers.
+*   **Privacy by Design:** Given this is a history tool, any data handling, storage, or network calls **MUST** be transparently documented in the PR. Prefer local storage or encrypted storage over external services unless absolutely necessary and approved.
 
-If you have any questions or need clarification on how to contribute, please open an issue.
+## 4. Reporting Issues and Security
 
-We look forward to your contributions!
+*   **Bugs/Features:** Please use the provided issue templates (`.github/ISSUE_TEMPLATE/bug_report.md`) for all bug reports or feature requests.
+*   **Security Vulnerabilities:** Report all security concerns privately following the guidelines in `.github/SECURITY.md`. **Do not** open public issues for security flaws.
+
+## 5. Repository Metadata Standards
+
+Contributors are encouraged to report inaccuracies in the project metadata:
+
+*   **Topics:** Ensure topics accurately reflect the technology (e.g., `typescript`, `vite`, `tailwind-css`).
+*   **License:** All contributions fall under the **CC BY-NC 4.0** license. By contributing, you agree to license your submission under these terms.
+
+Thank you for contributing to the Apex standard of software engineering.
